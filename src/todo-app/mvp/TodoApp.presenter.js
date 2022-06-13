@@ -7,20 +7,19 @@ export class TodoAppPresenter extends Presenter {
   constructor(model, view) {
     super(model, view);
 
-    this.methods = {
-      onChangeNewItem: this._onChangeNewItem.bind(this),
-      onAddNewItem: this._onAddNewItem.bind(this),
-    };
+    this.allDerivedMethodNames = this.makeDerivedMethodNames(
+      Object.getOwnPropertyNames(this)
+    );
   }
 
-  _onChangeNewItem = event => {
+  onChangeNewItem = event => {
     this._setModel(prv => ({
       ...prv,
       newItem: event.target.value,
     }));
   };
 
-  _onAddNewItem = () => {
+  onAddNewItem = () => {
     uid.update_uid();
     this._setModel(prv => ({
       todoList: [...prv.todoList, { item: prv.newItem, id: uid.uid }],

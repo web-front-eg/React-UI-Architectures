@@ -2,12 +2,12 @@ import { TodoAppModel } from "./mvp/TodoApp.model";
 import { TodoAppPresenter } from "./mvp/TodoApp.presenter";
 import TodoAppView from "./mvp/TodoApp.view";
 
-import { MVPProvider } from "../shared/MVPProvider";
+import { MVPConnector } from "../shared/MVPConnector";
 
 const TodoApp = () => (
-  <MVPProvider model={new TodoAppModel()} presenter={TodoAppPresenter}>
-    <TodoAppView />
-  </MVPProvider>
+  <MVPConnector model={new TodoAppModel()} presenter={TodoAppPresenter}>
+    {props => <TodoAppView {...props} />}
+  </MVPConnector>
 );
 
 export default TodoApp;

@@ -1,10 +1,7 @@
-
 export class TodoAppModel {
-  /**
-   * todoList Array<{item: string, id: number}>
-   */
+  // {item: string, id: number}[]
   todoList = [];
 
-  // newItem: string
+  // string
   newItem = "";
 }
