@@ -1,11 +1,11 @@
-import { Presenter } from "../../shared/Presenter";
+import { ViewModel } from "../../shared/ViewModel";
 import { gen_uid } from "../../shared/uid-gen";
 
 const uid = gen_uid();
 
-export class TodoAppPresenter extends Presenter {
-  constructor(model, view) {
-    super(model, view);
+export class TodoAppViewModel extends ViewModel {
+  constructor(model) {
+    super(model);
     this.setMethods.call(this);
   }
 

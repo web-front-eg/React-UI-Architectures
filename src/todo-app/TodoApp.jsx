@@ -1,13 +1,16 @@
-import { TodoAppModel } from "./mvp/TodoApp.model";
-import { TodoAppPresenter } from "./mvp/TodoApp.presenter";
-import TodoAppView from "./mvp/TodoApp.view";
+import { TodoAppModel } from "./mvvm/TodoApp.model";
+import { TodoAppViewModel } from "./mvvm/TodoApp.viewModel";
+import TodoAppView from "./mvvm/TodoApp.view";
 
-import { MVPConnector } from "../shared/MVPConnector";
+import { Connector } from "../shared/Connector";
 
 const TodoApp = () => (
-  <MVPConnector ModelInstance={new TodoAppModel()} PresenterType={TodoAppPresenter}>
+  <Connector
+    ModelInstance={new TodoAppModel()}
+    ViewModelType={TodoAppViewModel}
+  >
     {props => <TodoAppView {...props} />}
-  </MVPConnector>
+  </Connector>
 );
 
 export default TodoApp;
