@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { useRef } from "react";
+import React, { useState, useRef } from "react";
 
-export const BaseProvider = ({ model, presenter, children }) => {
+export const MVPProvider = ({ model, presenter, children }) => {
   const state = useState(model);
   const change = useRef(new presenter(state, children).methods).current;
 

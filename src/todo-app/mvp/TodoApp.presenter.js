@@ -1,13 +1,12 @@
+import { Presenter } from "../../shared/Presenter";
 import { gen_uid } from "../../shared/uid-gen";
 
 const uid = gen_uid();
 
-export class TodoAppPresenter {
+export class TodoAppPresenter extends Presenter {
   constructor(model, view) {
-    this._model = model[0];
-    this._setModel = model[1];
+    super(model, view);
 
-    this._view = view;
     this.methods = {
       onChangeNewItem: this._onChangeNewItem.bind(this),
       onAddNewItem: this._onAddNewItem.bind(this),
