@@ -1,24 +1,25 @@
 import React from "react";
 
-export const MVPConnector = ({ model, presenter, children }) => {
-  const observed_model = React.useState(model);
-  const presenter_instance = React.useRef(
-    new presenter(observed_model, children)
-  ).current;
+export const MVPConnector = ({
+  ModelInstance,
+  PresenterType,
+  children: view,
+}) => {
+  const model = React.useState(ModelInstance);
+  const presenter = React.useRef(new PresenterType(model, view)).current;
 
-  const unrefined_all_derived_methods =
-    presenter_instance.allDerivedMethodNames.map(
-      name => presenter_instance[name]
-    );
+  const unrefinedMethods = presenter.allDerivedMethodNames.map(
+    name => presenter[name]
+  );
 
   const all_presenter_methods = {};
-  for (let i = 0; i < presenter_instance.allDerivedMethodNames.length; ++i) {
-    const current = unrefined_all_derived_methods[i];
+  for (let i = 0; i < unrefinedMethods.length; ++i) {
+    const current = unrefinedMethods[i];
     Object.assign(all_presenter_methods, { [current.name]: current });
   }
 
-  return children({
-    ...observed_model[0],
+  return view({
+    ...model[0],
     ...all_presenter_methods,
   });
 };

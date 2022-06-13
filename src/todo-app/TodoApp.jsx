@@ -5,7 +5,7 @@ import TodoAppView from "./mvp/TodoApp.view";
 import { MVPConnector } from "../shared/MVPConnector";
 
 const TodoApp = () => (
-  <MVPConnector model={new TodoAppModel()} presenter={TodoAppPresenter}>
+  <MVPConnector ModelInstance={new TodoAppModel()} PresenterType={TodoAppPresenter}>
     {props => <TodoAppView {...props} />}
   </MVPConnector>
 );
