@@ -6,10 +6,7 @@ const uid = gen_uid();
 export class TodoAppPresenter extends Presenter {
   constructor(model, view) {
     super(model, view);
-
-    this.allDerivedMethodNames = this.makeDerivedMethodNames(
-      Object.getOwnPropertyNames(this)
-    );
+    this.setMethods.call(this);
   }
 
   onChangeNewItem = event => {

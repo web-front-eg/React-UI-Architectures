@@ -8,7 +8,7 @@ export const MVPConnector = ({
   const model = React.useState(ModelInstance);
   const presenter = React.useRef(new PresenterType(model, view)).current;
 
-  const unrefinedMethods = presenter.allDerivedMethodNames.map(
+  const unrefinedMethods = presenter.derivedMethodNames.map(
     name => presenter[name]
   );
 

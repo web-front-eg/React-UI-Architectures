@@ -5,10 +5,11 @@ export class Presenter {
     this._view = view;
 
     this.baseOnlyMethodNames = Object.getOwnPropertyNames(this);
+    this.derivedMethodNames = undefined;
   }
 
-  makeDerivedMethodNames = names => {
-    return names.filter(
+  setMethods = () => {
+    this.derivedMethodNames = Object.getOwnPropertyNames(this).filter(
       (name, i) =>
         name !== this.baseOnlyMethodNames[i] && typeof this[name] === "function"
     );
